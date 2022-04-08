@@ -4,12 +4,12 @@ Shows the correlations of an incident with other module records such as alerts, 
 
 **Incident Correlation Edit View**:
 
-<img src="./media/incident-correlation-edit-view.png" alt="Incident Correlation Edit View" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto; width: 80%">
+<img src="https://raw.githubusercontent.com/fortinet-fortisoar/widget-incident-correlations/release/2.0.0/docs/media/incident-correlation-edit-view.png" alt="Incident Correlation Edit View" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto; width: 80%">
 <br/>
 
 **Incident Correlation Graph**:
 
-<img src="./media/incident-correlation-graph.png" alt="Incident Correlation Graph" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto; width: 80%">
+<img src="https://raw.githubusercontent.com/fortinet-fortisoar/widget-incident-correlations/release/2.0.0/docs/media/incident-correlation-graph.png" alt="Incident Correlation Graph" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto; width: 80%">
 <br/>
 
 **Certified**: Yes  

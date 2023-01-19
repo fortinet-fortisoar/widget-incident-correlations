@@ -1,0 +1,25 @@
+{
+    "name": "incidentCorrelations",
+    "version": "2.1.0",
+    "title": "Incident Correlations",
+    "subTitle": "Correlation graph of given incident",
+    "metadata": {
+        "pages": [
+            "Dashboard",
+            "Reports"
+        ],
+        "certified": "Yes",
+        "publisher": "Fortinet",
+        "snapshots": [
+            "https:\/\/update.cybersponse.com\/fsr-widgets\/incidentCorrelations-2.1.0\/images\/incident-correlations-settings.png",
+            "https:\/\/update.cybersponse.com\/fsr-widgets\/incidentCorrelations-2.1.0\/images\/incident-correlations.png"
+        ],
+        "description": "<p>Incident Correlations<\/p> <ul> <li>Correlation graph of given incident <li>Displays all the correlated records in a graph format for the given incident<\/li> <li>Requires Following<\/li> <ul> <li>Incident ID through input<\/li> <\/ul> <\/ul>",
+        "help_online": "https:\/\/github.com\/fortinet-fortisoar\/widget-incident-correlations\/blob\/release\/2.1.0\/docs\/README.md",
+        "compatibility": [
+            "7.0.2",
+            "7.2.2",
+            "7.3.1"
+        ]
+    }
+}

@@ -1,0 +1,76 @@
+<style type="text/css">
+
+    .no-background {
+      background: transparent !important;
+    }
+</style>
+<div class="widget widget-container chart">
+    <div class="display-flex-space-between margin-chart">
+        <div class="padding-right-0 padding-left-0 widget-dashboard-title-width" data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-title-width' : 'widget-title-width'">
+            <h5 class="margin-top-0 margin-bottom-0 text-overflow ng-binding">Incident Correlations</h5>
+        </div>
+        <div class="padding-right-0 padding-left-0" data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-actions-width' : 'widget-actions-width'">
+            <span class="fa btn widget-action-icon btn-sm pull-right" data-ng-click="collapsed = !collapsed" data-ng-class="{'fa-caret-up': !collapsed, 'fa-caret-down': collapsed}"></span>
+        </div>
+    </div>
+    <div data-ng-hide="collapsed">
+        <div class="padding-left-lg padding-bottom-lg">
+            <div class="section-widget" data-ng-init="setElement(this)">
+                <div fullscreen="isFullscreen" class="overflow-auto full-screen-graph" only-watched-property>
+                    <div class="correlation-widget-title">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h3 data-ng-bind="config.title" class="custom-label-size padding-left-md margin-bottom-0"></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-ng-if="correlationWarning" class="text-center padding-bottom-25">
+                        <h6 data-ng-bind-html="correlationWarning"></h6>
+                    </div>
+                    <cs-spinner data-ng-show="processing" class="state-wait" data-show-background="true"></cs-spinner>
+                    <div data-ng-if="!correlationWarning && !processing" ng-class="{'correlation-graph-container-fullscreen':isFullscreen}" class="position-relative correlation-graph-container">
+                        <div data-cs-correlation-graph correlation-config="correlationConfig" widget-config="config" class="correlation-widget-view"
+                            data-graph-legends="graphLegends" data-options="options" update-on-change="true" data-json="field.value"
+                            ng-class="{'full-height':isFullscreen,'no-background':config.background === 'blank'}">
+                        </div>
+                        <div class="correlation-legends">
+                            <em class="font-size-11 muted">Graph Elements</em>
+                            <ul class="padding-left-sm padding-top-md">
+                                <li data-ng-repeat="legend in graphLegends">
+                                    <img class="legend-icon pull-left" data-ng-if="legend.data.$type === 'image'" data-ng-src="{{legend.data.$image}}">
+                                    <span class="pull-left" data-ng-if="legend.data.$type !== 'image'">
+                                        <svg width="18" height="18">
+                                            <circle cx="9" cy="9" r="9" data-ng-if="legend.data.$type === 'circle'" fill="grey" />
+                                            <rect width="18" height="18" rx="3" ry="3" data-ng-if="legend.data.$type === 'square'" fill="grey" />
+                                            <rect width="18" height="18" data-ng-if="legend.data.$type === 'box'" fill="grey" />
+                                            <ellipse cx="9" cy="9" rx="9" ry="4" data-ng-if="legend.data.$type === 'ellipse'" fill="grey" />
+                                            <polygon points="9,0 16,18 0,6 18,6 2,18" data-ng-if="legend.data.$type === 'star'" fill="grey" />
+                                            <polygon points="5,0 13,0 18,5 18,13 13,18 5,18 0,13 0,5" data-ng-if="legend.data.$type === 'hexagon'" fill="grey" />
+                                            <polygon points="9,0 18,18 0,18" data-ng-if="legend.data.$type === 'triangle'" fill="grey" />
+                                            <polygon points="0,0 18,0 9,18" data-ng-if="legend.data.$type === 'triangleDown'" fill="grey" />
+                                            <polygon points="9,0 18,9 9,18 0,9" data-ng-if="legend.data.$type === 'diamond'" fill="grey" />
+                                            <circle cx="10" cy="10" r="4" data-ng-if="legend.data.$type === 'dot'" fill="grey" />
+                                            <g data-ng-if="legend.data.$type === 'database'">
+                                                <path d="M0 5 L18 5 L18 15 Q9,18 0,15 z" fill="grey"></path>
+                                                <ellipse cx="9" cy="5" rx="9" ry="2.5" fill="lightgrey"></ellipse>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <span class="display-inline-block float-left font-size-12 margin-left-sm margin-top-3 margin-bottom-md text-capitalize" data-ng-bind="legend.moduleType"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="dropdown-menu context-menu-correlation">
+                            <li>
+                                <a data-ng-click="onView(false)" tabindex="-1">Open Record</a>
+                            </li>
+                            <li>
+                                <a data-ng-click="onView(true)" tabindex="-1">Open Record in New Tab</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

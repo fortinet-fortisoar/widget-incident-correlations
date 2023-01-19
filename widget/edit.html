@@ -1,0 +1,43 @@
+<form data-ng-submit="save()" class="noMargin" name="visualCorrelationForm" data-ng-class="{'state-wait': processing }" novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title col-md-9">Incident Correlation Edit View</h3>
+        <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close" id="close-edit-widget-form-btn">
+            <div aria-hidden="true" class="version-button">+</div>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="control-label" for="formGroupTitle">Incident Correlation Widget Title (leave blank for no title)</label>
+            <input class="form-control" type="text" id="visualCorrelationFormTitle" data-ng-model="config.title" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="formGroupTitle">Incident Node ID <span class="text-danger">*</span></label>
+            <div class="cs-select">
+                <select id="visualCorrelationEntityId" name="visualCorrelationEntityId" data-cs-focus data-ng-model="config.entityId" data-ng-required="true"
+                    class="form-control" autocomplete="off" data-ng-class="::{'input-big': size === 'large', 'input-sm': size === 'small'}"
+                    data-ng-options="input.expression as input.label for input in ::expressions">
+                    <option value="">Select from Configure Inputs</option>
+                </select>
+                <span class="fa fa-sort-desc"></span>
+            </div>
+          	<div data-cs-messages="visualCorrelationForm.visualCorrelationEntityId"></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="formGroupTitle">Background</label>
+            <div class="cs-select">
+                <select  id="visualCorrelationBackground" name="visualCorrelationBackground" data-cs-focus data-ng-model="config.background"
+                    class="form-control" autocomplete="off" data-ng-class="::{'input-big': size === 'large', 'input-sm': size === 'small'}">
+                    <option value="dotted">Dotted Background</option>
+                    <option value="blank">Plain Background</option>
+                </select>
+                <span class="fa fa-sort-desc"></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="edit-widget-save" type="submit" class="btn btn-sm btn-primary">
+            <i class="icon icon-check margin-right-sm"></i>Save</button>
+        <button id="edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()">
+            <i class="icon icon-close margin-right-sm"></i>Close</button>
+    </div>
+</form>

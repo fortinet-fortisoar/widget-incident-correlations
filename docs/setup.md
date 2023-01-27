@@ -28,6 +28,9 @@ To use the Incident Correlations widget you must defined the input variable that
 
 **Incident Correlations Widget Settings** 
 
+Edit the page, for example, Dashboard, where you want to add the Incident Correlations widget. On the `Template Editing Mode Enabled` page, add the Incident Correlations widget, and then click **Edit** to edit its settings:
+<img src="https://raw.githubusercontent.com/fortinet-fortisoar/widget-incident-correlations/release/2.1.0/docs/media/incident_correlations_edit.png" alt="Editing the Incident Correlations widget" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto;">
+
 Provide the following details to customize the Incident Correlations widget to suit your requirements:
 
 | Fields                            | Description                              |

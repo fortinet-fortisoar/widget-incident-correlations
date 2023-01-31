@@ -2,4 +2,4 @@
 |----------------------|
 
 # Contents
-NA
+Content is not applicable for this widget.

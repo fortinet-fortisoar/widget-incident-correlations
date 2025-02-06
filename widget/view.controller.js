@@ -31,9 +31,10 @@
                     $scope.processing = false;
                     return;
                 } else if (!setting.publicValues.correlationConfig) {
-                    ViewTemplateService.getSystemViewTemplates('', 'settings').then(function(response) {
-                        if(response.data['hydra:member'].length > 0) {
-                          _.each(response.data['hydra:member'], function(setting) {
+                        let selectedFields = ['uuid','name','isDefault','importedBy'];
+                        ViewTemplateService.getSystemViewTemplateList('', ['settings'], selectedFields).then(function(response) {
+                        if(response['hydra:member'].length > 0) {
+                          _.each(response['hydra:member'], function(setting) {
                             var moduleType = setting.uuid.split('-')[1];
                             if(setting.config && setting.config.correlationConfig) {
                               setting.config.correlationConfig = angular.isArray(setting.config.correlationConfig) ? {} : setting.config.correlationConfig;

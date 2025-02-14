@@ -8,9 +8,9 @@
         .module('cybersponse')
         .controller('incidentCorrelations210Ctrl', incidentCorrelations210Ctrl);
 
-    incidentCorrelations210Ctrl.$inject = ['$scope', 'correlationGraphService', 'ViewTemplateService', 'toaster', 'settingsService', 'config', '_', 'appModulesService', '$filter', '$state', '$window', '$interpolate', '$resource', 'API'];
+    incidentCorrelations210Ctrl.$inject = ['$scope', 'correlationGraphService', 'ViewTemplateService', 'toaster', 'settingsService', 'config', '_', 'appModulesService', '$filter', '$state', '$window', '$interpolate', '$resource', 'API', 'versionService'];
 
-    function incidentCorrelations210Ctrl($scope, correlationGraphService, ViewTemplateService, toaster, settingsService, config, _, appModulesService, $filter, $state, $window, $interpolate, $resource, API) {
+    function incidentCorrelations210Ctrl($scope, correlationGraphService, ViewTemplateService, toaster, settingsService, config, _, appModulesService, $filter, $state, $window, $interpolate, $resource, API, versionService) {
         $scope.config = config;
         $scope.refresh = refresh;
         $scope.isFullscreen = false;
@@ -23,7 +23,11 @@
         $scope.entityName = 'incidents';
         $resource(API.BASE + 'incidents').get({id:entityId}, function(data) {
             $scope.entityId = $filter('getEndPathName')(data['hydra:member'][0]['@id']);
-            _init();
+            versionService.get('cyops_version').then(function (version) {
+                $scope.cyopsVersion = parseInt(version.version.split('.').join(''));
+            }).finally(function() {
+                _init();
+            });
         });
         var selectedNode;
 
@@ -36,24 +40,36 @@
                     $scope.processing = false;
                     return;
                 } else if (!setting.publicValues.correlationConfig) {
-                        let selectedFields = ['uuid','name','isDefault','importedBy'];
-                        ViewTemplateService.getSystemViewTemplateList('', ['settings'], selectedFields).then(function(response) {
-                        if(response['hydra:member'].length > 0) {
-                          _.each(response['hydra:member'], function(setting) {
-                            var moduleType = setting.uuid.split('-')[1];
-                            if(setting.config && setting.config.correlationConfig) {
-                              setting.config.correlationConfig = angular.isArray(setting.config.correlationConfig) ? {} : setting.config.correlationConfig;
-                              if(Object.keys(setting.config.correlationConfig).length > 0) {
-                                $scope.correlationConfig[moduleType] = setting.config.correlationConfig;
-                              }
-                            }
-                          });
-                          _getNodeData();
-                        } else {
-                          $scope.correlationWarning = 'Please configure correlation setting.';
-                          $scope.processing = false;
-                          return;
+                        let viewTemplatePromise;
+                        if($scope.cyopsVersion < 762) {
+                            viewTemplatePromise = ViewTemplateService.getSystemViewTemplates('', 'settings');
+                        }else {
+                            let selectedFields = ['uuid','name','isDefault','importedBy', 'config', 'module'];
+                            viewTemplatePromise = ViewTemplateService.getSystemViewTemplateList('', ['settings'], selectedFields);
                         }
+                        viewTemplatePromise.then(function(response) {
+                            let result;
+                            if($scope.cyopsVersion < 762) {
+                                result = response.data['hydra:member'];
+                            }else {
+                                result = response['hydra:member'];
+                            }
+                            if(result.length > 0) {
+                            _.each(result, function(setting) {
+                                var moduleType = setting.module ? setting.module : setting.uuid.split('-')[1];
+                                if(setting.config && setting.config.correlationConfig) {
+                                setting.config.correlationConfig = angular.isArray(setting.config.correlationConfig) ? {} : setting.config.correlationConfig;
+                                if(Object.keys(setting.config.correlationConfig).length > 0) {
+                                    $scope.correlationConfig[moduleType] = setting.config.correlationConfig;
+                                }
+                                }
+                            });
+                            _getNodeData();
+                            } else {
+                            $scope.correlationWarning = 'Please configure correlation setting.';
+                            $scope.processing = false;
+                            return;
+                            }
                     });
                 } else {
                     $scope.correlationConfig = setting.publicValues.correlationConfig;

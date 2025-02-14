@@ -58,17 +58,17 @@
                             _.each(result, function(setting) {
                                 var moduleType = setting.module ? setting.module : setting.uuid.split('-')[1];
                                 if(setting.config && setting.config.correlationConfig) {
-                                setting.config.correlationConfig = angular.isArray(setting.config.correlationConfig) ? {} : setting.config.correlationConfig;
-                                if(Object.keys(setting.config.correlationConfig).length > 0) {
-                                    $scope.correlationConfig[moduleType] = setting.config.correlationConfig;
-                                }
+                                    setting.config.correlationConfig = angular.isArray(setting.config.correlationConfig) ? {} : setting.config.correlationConfig;
+                                    if(Object.keys(setting.config.correlationConfig).length > 0) {
+                                        $scope.correlationConfig[moduleType] = setting.config.correlationConfig;
+                                    }
                                 }
                             });
                             _getNodeData();
                             } else {
-                            $scope.correlationWarning = 'Please configure correlation setting.';
-                            $scope.processing = false;
-                            return;
+                                $scope.correlationWarning = 'Please configure correlation setting.';
+                                $scope.processing = false;
+                                return;
                             }
                     });
                 } else {

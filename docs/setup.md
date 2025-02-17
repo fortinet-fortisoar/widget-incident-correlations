@@ -23,13 +23,13 @@ To use the Incident Correlations widget you must defined the input variable that
       The **Identifier** field gets automatically populated with the identifier based on the "**Label**" you have specified. In our example, it gets populated as **incidentID**. The value that is present in the Identifier field is the key by which this variable will be identified.
    5. (Optional) In the **Default Value** field, choose the value based on which the widget will be displayed, by default. In our example, we do not specify any default value.
    6. (Optional) To make the input field mandatory, click the **Required** checkbox. If you select the Required checkbox, then the widget gets displayed if the default value is specified in the **Default Value** field, else it does not get displayed unless users provide the 'Input', and instead a message such as '`Please provide required inputs to load the dashboard`' is displayed.  
-      <img src="https://raw.githubusercontent.com/fortinet-fortisoar/widget-incident-correlations/release/2.1.0/docs/media/incident_correlations_ConfigureInputs.png" alt="Providing inputs to the Incident Correlation Widget" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto;">
+      <img src="https://raw.githubusercontent.com/fortinet-fortisoar/widget-incident-correlations/release/2.1.1/docs/media/incident_correlations_ConfigureInputs.png" alt="Providing inputs to the Incident Correlation Widget" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto;">
    7. Click **Save** to save the variable.
 
 **Incident Correlations Widget Settings** 
 
 Edit the page, for example, Dashboard, where you want to add the Incident Correlations widget. On the `Template Editing Mode Enabled` page, add the Incident Correlations widget, and then click **Edit** to edit its settings:
-<img src="https://raw.githubusercontent.com/fortinet-fortisoar/widget-incident-correlations/release/2.1.0/docs/media/incident_correlations_edit.png" alt="Editing the Incident Correlations widget" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto;">
+<img src="https://raw.githubusercontent.com/fortinet-fortisoar/widget-incident-correlations/release/2.1.1/docs/media/incident_correlations_edit.png" alt="Editing the Incident Correlations widget" style="border: 1px solid #A9A9A9; border-radius: 4px; padding: 10px; display: block; margin-left: auto; margin-right: auto;">
 
 Provide the following details to customize the Incident Correlations widget to suit your requirements:
 

@@ -1,5 +1,3 @@
-# What's New
+### What's New
 
-**Bug fixes**: 
-
-- Fixed a bug due to which the Incident Correlation widget had stopped rendering on releases later than FortiSOAR 7.2.0. The Incident Correlation widget had stopped working due to some updates to the APIs used by the widget.
+- Updated the API call to incorporate the endpoint changes that affected the loading of correlation graph on the detailed view of a record.

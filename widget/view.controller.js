@@ -6,11 +6,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('incidentCorrelations210Ctrl', incidentCorrelations210Ctrl);
+        .controller('incidentCorrelations211Ctrl', incidentCorrelations211Ctrl);
 
-    incidentCorrelations210Ctrl.$inject = ['$scope', 'correlationGraphService', 'ViewTemplateService', 'toaster', 'settingsService', 'config', '_', 'appModulesService', '$filter', '$state', '$window', '$interpolate', '$resource', 'API', 'versionService'];
+    incidentCorrelations211Ctrl.$inject = ['$scope', 'correlationGraphService', 'ViewTemplateService', 'toaster', 'settingsService', 'config', '_', 'appModulesService', '$filter', '$state', '$window', '$interpolate', '$resource', 'API', 'versionService'];
 
-    function incidentCorrelations210Ctrl($scope, correlationGraphService, ViewTemplateService, toaster, settingsService, config, _, appModulesService, $filter, $state, $window, $interpolate, $resource, API, versionService) {
+    function incidentCorrelations211Ctrl($scope, correlationGraphService, ViewTemplateService, toaster, settingsService, config, _, appModulesService, $filter, $state, $window, $interpolate, $resource, API, versionService) {
         $scope.config = config;
         $scope.refresh = refresh;
         $scope.isFullscreen = false;

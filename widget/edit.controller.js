@@ -6,11 +6,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('editIncidentCorrelations210Ctrl', editIncidentCorrelations210Ctrl);
+        .controller('editIncidentCorrelations211Ctrl', editIncidentCorrelations211Ctrl);
 
-    editIncidentCorrelations210Ctrl.$inject = ['$scope', 'config', '$uibModalInstance', 'ViewTemplateService'];
+    editIncidentCorrelations211Ctrl.$inject = ['$scope', 'config', '$uibModalInstance', 'ViewTemplateService'];
 
-    function editIncidentCorrelations210Ctrl($scope, config, $uibModalInstance, ViewTemplateService) {
+    function editIncidentCorrelations211Ctrl($scope, config, $uibModalInstance, ViewTemplateService) {
         $scope.config = config || { 'nodeLevels': [] };
         if (!$scope.config.nodeLevels) {
             $scope.config.nodeLevels = [];
